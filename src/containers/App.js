@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { createContext } from 'react'
 import {
   useReducer,
   useContext,
@@ -19,13 +19,16 @@ const todoInitialState = [
   },
 ]
 
+export const context = createContext({})
+const { Provider } = context
+
 function WrappedApp() {
-  const [store, dispatch] = useReducer(todoReducer, todoInitialState)
-  this.store = store
-  this.dispatch = dispatch
+  const [state, dispatch] = useReducer(todoReducer, todoInitialState)
 
   return (
-    <App store={store} />
+    <Provider value={{state, dispatch}}>
+      <App />
+    </Provider>
   )
 }
 

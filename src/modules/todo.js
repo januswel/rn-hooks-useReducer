@@ -13,24 +13,18 @@ export default (state, action) => {
         isDone: false,
       }]
     case COMPLETE: {
-      const { index } = action.payload
-      const target = state[index]
-      taret.isDone = true
-      return [
-        ...state.slice(0, index - 1),
-        target,
-        ...state.slice(index + 1, state.length - 1)
-      ]
+      return state.map((todo, index) => (index === action.payload.index ?  {
+        key: todo.key,
+        action: todo.action,
+        isDone: true,
+      } : todo))
     }
     case UNDO: {
-      const { index } = action.payload
-      const target = state[index]
-      taret.isDone = false
-      return [
-        ...state.slice(0, index - 1),
-        target,
-        ...state.slice(index + 1, state.length - 1)
-      ]
+      return state.map((todo, index) => (index === action.payload.index ?  {
+        key: todo.key,
+        action: todo.action,
+        isDone: false,
+      } : todo))
     }
     default:
       return state

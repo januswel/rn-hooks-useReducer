@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {
   StyleSheet,
   Text,
   SafeAreaView,
 } from 'react-native'
 import Todos from './Todos'
+import { context } from '../containers/App'
 
 const styles = StyleSheet.create({
   container: {
@@ -13,8 +14,12 @@ const styles = StyleSheet.create({
   },
 })
 
-export default props => (
-  <SafeAreaView style={styles.container}>
-    <Todos todos={props.store} />
-  </SafeAreaView>
-)
+export default props => {
+  const { state } = useContext(context)
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <Todos todos={state} />
+    </SafeAreaView>
+  )
+}

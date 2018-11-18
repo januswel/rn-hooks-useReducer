@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {
   StyleSheet,
   Text,
   View,
 } from 'react-native'
+import { context } from '../containers/App'
+import { complete, undo } from '../modules/todo'
 
 const styles = StyleSheet.create({
   container: {
@@ -18,10 +20,17 @@ const styles = StyleSheet.create({
   },
 })
 
-export default props => (
-  <View style={styles.container}>
-    <Text style={[styles.action, props.isDone ? styles.done : null]}>
-      {props.action}
-    </Text>
-  </View>
-)
+export default props => {
+  const { dispatch } = useContext(context)
+
+  return (
+    <View style={styles.container}>
+      <Text
+        style={[styles.action, props.isDone ? styles.done : null]}
+        onPress={() => dispatch(complete(props.index))}
+      >
+        {props.action}
+      </Text>
+    </View>
+  )
+}
