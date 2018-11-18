@@ -6,7 +6,7 @@ import Todo from './Todo'
 
 export default props => (
   <FlatList
-    data={props.todos}
+    data={props.state}
     renderItem={({item}) => <Todo {...item} />}
   />
 )

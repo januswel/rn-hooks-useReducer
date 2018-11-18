@@ -5,6 +5,7 @@ import {
   SafeAreaView,
 } from 'react-native'
 import Todos from './components/Todos'
+import store from './store'
 
 const styles = StyleSheet.create({
   container: {
@@ -13,23 +14,8 @@ const styles = StyleSheet.create({
   },
 })
 
-const todos = [
-  {
-    action: 'Remember the milk',
-    isDone: true,
-    key: `Remember the milk${new Date().getTime()}`,
-  },
-  {
-    action: 'Use useReducer',
-    isDone: false,
-    key: `Use useReducer${new Date().getTime()}`,
-  },
-]
-
 export default () => (
   <SafeAreaView style={styles.container}>
-    <Todos
-      todos={todos}
-    />
+    <Todos todos={store} />
   </SafeAreaView>
 )
