@@ -4,8 +4,7 @@ import {
   Text,
   SafeAreaView,
 } from 'react-native'
-import Todos from './components/Todos'
-import store from './store'
+import Todos from './Todos'
 
 const styles = StyleSheet.create({
   container: {
@@ -14,8 +13,8 @@ const styles = StyleSheet.create({
   },
 })
 
-export default () => (
+export default props => (
   <SafeAreaView style={styles.container}>
-    <Todos todos={store} />
+    <Todos todos={props.store} />
   </SafeAreaView>
 )
