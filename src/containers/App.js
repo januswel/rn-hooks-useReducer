@@ -1,8 +1,7 @@
 import React, { createContext } from 'react'
-import {
-  useReducer,
-  useContext,
-} from 'react'
+import { useReducer } from 'react'
+
+import appContext from '../app-context'
 import reducer from '../modules'
 import App from '../components/App'
 
@@ -19,7 +18,6 @@ const initialState = [
   },
 ]
 
-export const appContext = createContext({})
 const { Provider } = appContext
 
 function WrappedApp() {

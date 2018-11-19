@@ -4,7 +4,8 @@ import {
   Text,
   View,
 } from 'react-native'
-import { appContext } from '../containers/App'
+
+import appContext from '../app-context'
 import { complete, undo } from '../modules/todo'
 
 const styles = StyleSheet.create({

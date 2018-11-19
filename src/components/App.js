@@ -4,8 +4,9 @@ import {
   Text,
   SafeAreaView,
 } from 'react-native'
+
 import Todos from './Todos'
-import { appContext } from '../containers/App'
+import appContext from '../app-context'
 
 const styles = StyleSheet.create({
   container: {
