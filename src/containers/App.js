@@ -3,10 +3,10 @@ import {
   useReducer,
   useContext,
 } from 'react'
-import todoReducer from '../modules/todo'
+import reducer from '../modules'
 import App from '../components/App'
 
-const todoInitialState = [
+const initialState = [
   {
     action: 'Remember the milk',
     isDone: true,
@@ -19,11 +19,11 @@ const todoInitialState = [
   },
 ]
 
-export const context = createContext({})
-const { Provider } = context
+export const appContext = createContext({})
+const { Provider } = appContext
 
 function WrappedApp() {
-  const [state, dispatch] = useReducer(todoReducer, todoInitialState)
+  const [state, dispatch] = useReducer(reducer, initialState)
 
   return (
     <Provider value={{state, dispatch}}>

@@ -4,7 +4,7 @@ import {
   Text,
   View,
 } from 'react-native'
-import { context } from '../containers/App'
+import { appContext } from '../containers/App'
 import { complete, undo } from '../modules/todo'
 
 const styles = StyleSheet.create({
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
 })
 
 export default props => {
-  const { dispatch } = useContext(context)
+  const { dispatch } = useContext(appContext)
 
   return (
     <View style={styles.container}>
