@@ -21,6 +21,8 @@ const styles = StyleSheet.create({
   },
 })
 
+const invert = todo => todo.isDone ? undo(todo.index) : complete(todo.index)
+
 export default props => {
   const { dispatch } = useContext(appContext)
 
@@ -28,7 +30,7 @@ export default props => {
     <View style={styles.container}>
       <Text
         style={[styles.action, props.isDone ? styles.done : null]}
-        onPress={() => dispatch(complete(props.index))}
+        onPress={() => dispatch(invert(props))}
       >
         {props.action}
       </Text>
