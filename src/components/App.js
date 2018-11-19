@@ -13,6 +13,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F5FCFF',
   },
+  title: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    backgroundColor: 'black',
+    color: 'white',
+  },
 })
 
 export default props => {
@@ -20,6 +27,7 @@ export default props => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Text style={styles.title}>TODO list</Text>
       <Todos todos={state} />
     </SafeAreaView>
   )
