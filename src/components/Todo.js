@@ -11,6 +11,11 @@ import { complete, undo } from '../modules/todo'
 const styles = StyleSheet.create({
   container: {
     padding: 4,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  icon: {
+    width: 32,
   },
   action: {
     fontSize: 24,
@@ -28,6 +33,7 @@ export default props => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.icon}>{props.isDone ? '✅' : ''}</Text>
       <Text
         style={[styles.action, props.isDone ? styles.done : null]}
         onPress={() => dispatch(invert(props))}
