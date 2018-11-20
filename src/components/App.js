@@ -5,8 +5,9 @@ import {
   SafeAreaView,
 } from 'react-native'
 
-import Todos from './Todos'
 import appContext from '../app-context'
+import Todos from './Todos'
+import TodoForm from './todo-form'
 
 const styles = StyleSheet.create({
   container: {
@@ -29,6 +30,7 @@ export default props => {
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>TODO list</Text>
       <Todos todos={state} />
+      <TodoForm />
     </SafeAreaView>
   )
 }

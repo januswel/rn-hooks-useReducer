@@ -6,12 +6,16 @@ const generateKey = src => `src${new Date().getTime()}`
 
 export default (state, action) => {
   switch (action.type) {
-    case ADD:
+    case ADD: {
+      if (!action.payload.action) {
+        return state
+      }
       return [...state, {
         key: generateKey(action.payload.action),
         action: action.payload.action,
         isDone: false,
       }]
+    }
     case COMPLETE: {
       return state.map((todo, index) => (index === action.payload.index ?  {
         key: todo.key,
