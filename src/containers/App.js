@@ -20,7 +20,7 @@ const initialState = [
 
 const { Provider } = appContext
 
-function WrappedApp() {
+export default () => {
   const [state, dispatch] = useReducer(reducer, initialState)
 
   return (
@@ -29,5 +29,3 @@ function WrappedApp() {
     </Provider>
   )
 }
-
-export default WrappedApp
