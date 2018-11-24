@@ -10,7 +10,7 @@ import {
   View,
 } from 'react-native'
 
-import appContext from '../app-context'
+import appContext from '../util/app-context'
 import { add } from '../modules/todo'
 
 const styles = StyleSheet.create({
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
 })
 
 export default () => {
-  const { dispatch } = useContext(appContext)
+  const store = useContext(appContext)
   const [value, setValue] = useState('')
 
   return (
@@ -51,7 +51,7 @@ export default () => {
       />
       <TouchableOpacity
         style={styles.button}
-        onPress={() => { dispatch(add(value)) }}
+        onPress={() => { store.dispatch(add(value)) }}
       >
         <Text style={styles.buttonLabel}>add</Text>
       </TouchableOpacity>

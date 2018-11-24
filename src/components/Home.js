@@ -5,7 +5,7 @@ import {
   SafeAreaView,
 } from 'react-native'
 
-import appContext from '../app-context'
+import appContext from '../util/app-context'
 import Todos from './Todos'
 import TodoForm from './todo-form'
 
@@ -24,12 +24,12 @@ const styles = StyleSheet.create({
 })
 
 export default props => {
-  const { state } = useContext(appContext)
+  const store = useContext(appContext)
 
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>TODO list</Text>
-      <Todos todos={state} />
+      <Todos todos={store.getState()} />
       <TodoForm />
     </SafeAreaView>
   )

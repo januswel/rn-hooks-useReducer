@@ -5,7 +5,7 @@ import {
   View,
 } from 'react-native'
 
-import appContext from '../app-context'
+import appContext from '../util/app-context'
 import { complete, undo } from '../modules/todo'
 
 const styles = StyleSheet.create({
@@ -29,14 +29,14 @@ const styles = StyleSheet.create({
 const invert = todo => todo.isDone ? undo(todo.index) : complete(todo.index)
 
 export default props => {
-  const { dispatch } = useContext(appContext)
+  const store = useContext(appContext)
 
   return (
     <View style={styles.container}>
       <Text style={styles.icon}>{props.isDone ? '✅' : ''}</Text>
       <Text
         style={[styles.action, props.isDone ? styles.done : null]}
-        onPress={() => dispatch(invert(props))}
+        onPress={() => store.dispatch(invert(props))}
       >
         {props.action}
       </Text>
