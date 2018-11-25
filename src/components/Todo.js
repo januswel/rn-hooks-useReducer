@@ -24,19 +24,17 @@ const styles = StyleSheet.create({
   },
 })
 
-export default props => {
-  return (
-    <TouchableOpacity onPress={() => {
-      props.isDone
-        ? props.actions.undo(props.index)
-        : props.actions.complete(props.index)
-    }}>
-      <View style={styles.container}>
-        <Text style={styles.icon}>{props.isDone ? '✅' : ''}</Text>
-        <Text style={[styles.action, props.isDone ? styles.done : null]}>
-          {props.action}
-        </Text>
-      </View>
-    </TouchableOpacity>
-  )
-}
+export default props => (
+  <TouchableOpacity onPress={() => {
+    props.isDone
+      ? props.actions.undo(props.index)
+      : props.actions.complete(props.index)
+  }}>
+    <View style={styles.container}>
+      <Text style={styles.icon}>{props.isDone ? '✅' : ''}</Text>
+      <Text style={[styles.action, props.isDone ? styles.done : null]}>
+        {props.action}
+      </Text>
+    </View>
+  </TouchableOpacity>
+)

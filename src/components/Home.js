@@ -6,7 +6,7 @@ import {
 } from 'react-native'
 
 import Todos from '../containers/Todos'
-import TodoForm from './todo-form'
+import TodoForm from '../containers/TodoForm'
 
 const styles = StyleSheet.create({
   container: {

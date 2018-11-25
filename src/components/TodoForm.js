@@ -1,7 +1,4 @@
-import React, {
-  useContext,
-  useState,
-} from 'react'
+import React, { useState } from 'react'
 import {
   StyleSheet,
   Text,
@@ -9,9 +6,6 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
-
-import appContext from '../util/app-context'
-import { add } from '../modules/todo'
 
 const styles = StyleSheet.create({
   container: {
@@ -39,8 +33,7 @@ const styles = StyleSheet.create({
   },
 })
 
-export default () => {
-  const store = useContext(appContext)
+export default props => {
   const [value, setValue] = useState('')
 
   return (
@@ -51,7 +44,7 @@ export default () => {
       />
       <TouchableOpacity
         style={styles.button}
-        onPress={() => { store.dispatch(add(value)) }}
+        onPress={() => { props.actions.add(value) }}
       >
         <Text style={styles.buttonLabel}>add</Text>
       </TouchableOpacity>
