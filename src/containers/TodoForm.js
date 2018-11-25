@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
+import React from 'react'
 
-import appContext from '../util/app-context'
 import TodoForm from '../components/TodoForm'
 import { add } from '../modules/todo'
+import connect from '../util/connect'
 
 const mapDispatchToProps = dispatch => ({
   actions: {
@@ -10,12 +10,4 @@ const mapDispatchToProps = dispatch => ({
   },
 })
 
-export default () => {
-  const store = useContext(appContext)
-
-  return (
-    <TodoForm
-      {...mapDispatchToProps(store.dispatch)}
-    />
-  )
-}
+export default connect(null, mapDispatchToProps)(TodoForm)

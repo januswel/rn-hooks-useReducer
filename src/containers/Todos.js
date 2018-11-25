@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
+import React from 'react'
 
-import appContext from '../util/app-context'
 import Todos from '../components/Todos'
 import { complete, undo } from '../modules/todo'
+import connect from '../util/connect'
 
 const mapStateToProps = state => ({
   todos: state,
@@ -14,13 +14,4 @@ const mapDispatchToProps = dispatch => ({
   },
 })
 
-export default () => {
-  const store = useContext(appContext)
-
-  return (
-    <Todos
-      {...mapStateToProps(store.getState())}
-      {...mapDispatchToProps(store.dispatch)}
-    />
-  )
-}
+export default connect(mapStateToProps, mapDispatchToProps)(Todos)

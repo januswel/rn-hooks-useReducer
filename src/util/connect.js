@@ -1,16 +1,28 @@
-import React, { useContext } from 'react'
+import React from 'react'
+
 import appContext from './app-context'
 
+const { Consumer } = appContext
 const isFunction = target => typeof target === 'function'
+const defualtMapStateToProps = () => ({})
+const defualtMapDispatchToProps = () => ({})
 
-export default ({mapStateToProps, mapDispatchToProps}) => {
-  const store = useContext(appContext)
-  const stateProps = isFunction(mapStateToProps)
-    ? mapStateToProps(store.getState())
-    : null
-  const dispatchProps = isFunction(mapDispatchToProps)
-    ? mapDispatchToProps(store.dispatch)
-    : null
+export default (originalMapStateToProps, originalMapDispatchToProps) => {
+  const mapStateToProps = isFunction(originalMapStateToProps)
+    ? originalMapStateToProps
+    : defualtMapStateToProps
+  const mapDispatchToProps = isFunction(originalMapDispatchToProps)
+    ? originalMapDispatchToProps
+    : defualtMapDispatchToProps
 
-  return <children {...stateProps} {...dispatchProps} />
+  return Component => () => (
+    <Consumer>
+      {store => (
+        <Component
+          {...mapStateToProps(store.getState())}
+          {...mapDispatchToProps(store.dispatch)}
+        />
+      )}
+    </Consumer>
+  )
 }
