@@ -4,7 +4,7 @@ import {
   StyleSheet,
 } from 'react-native'
 
-import Todo from './Todo'
+import Todo from '../components/Todo'
 
 const styles = StyleSheet.create({
   container: {
@@ -16,6 +16,8 @@ export default props => (
   <FlatList
     style={styles.container}
     data={props.todos}
-    renderItem={({item, index}) => <Todo {...item} index={index} />}
+    renderItem={
+      ({item, index}) => <Todo {...item} index={index} actions={props.actions} />
+    }
   />
 )
