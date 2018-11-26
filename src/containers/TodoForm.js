@@ -1,5 +1,3 @@
-import React from 'react'
-
 import TodoForm from '../components/TodoForm'
 import { add } from '../modules/todo'
 import connect from '../util/connect'
